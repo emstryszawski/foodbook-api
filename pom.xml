@@ -3,14 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
+        <groupId>org.foodbook</groupId>
         <artifactId>foodbook</artifactId>
-        <groupId>pl.edu.pjatk.foodbook</groupId>
-        <version>0.0.1</version>
+        <version>1.0.1</version>
     </parent>
 
-    <groupId>pl.edu.pjatk.foodbook.foodbookservice</groupId>
-    <artifactId>foodbook-service</artifactId>
-    <name>Foodbook service</name>
+    <artifactId>foodbook-api</artifactId>
+    <name>Foodbook API</name>
 
     <properties>
         <swagger.package>pl.edu.pjatk.foodbook.foodbookservice.swagger</swagger.package>
@@ -20,6 +19,11 @@
     </properties>
 
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>org.foodbook</groupId>-->
+<!--            <artifactId>foodbook</artifactId>-->
+<!--            <version>${foodbook.version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
