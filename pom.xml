@@ -1,0 +1,114 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>foodbook</artifactId>
+        <groupId>pl.edu.pjatk.foodbook</groupId>
+        <version>0.0.1</version>
+    </parent>
+
+    <groupId>pl.edu.pjatk.foodbook.foodbookservice</groupId>
+    <artifactId>foodbook-service</artifactId>
+    <name>Foodbook service</name>
+
+    <properties>
+        <swagger.package>pl.edu.pjatk.foodbook.foodbookservice.swagger</swagger.package>
+        <swagger.input.spec>${project.basedir}/src/main/resources/swagger</swagger.input.spec>
+
+        <postgresql.version>42.5.1</postgresql.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>6.2.1</version>
+                <executions>
+                    <execution>
+                        <id>recipe-service-api</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${swagger.input.spec}/recipe-api-0.0.1.yml</inputSpec>
+
+                            <generatorName>spring</generatorName>
+                            <library>spring-cloud</library>
+
+                            <groupId>pl.edu.pjatk.foodbook.foodbookservice</groupId>
+                            <artifactId>foodbook-service</artifactId>
+
+                            <generateApiTests>false</generateApiTests>
+                            <generateModelTests>false</generateModelTests>
+
+                            <modelPackage>${swagger.package}.recipe.model</modelPackage>
+                            <apiPackage>${swagger.package}.recipe.api</apiPackage>
+                            <invokerPackage>pl.edu.pjatk.foodbook.ignore</invokerPackage>
+
+                            <configOptions>
+                                <sourceFolder>src/gen/java/main</sourceFolder>
+                                <java8>true</java8>
+                                <dateLibrary>java8-localdatetime</dateLibrary>
+                                <configPackage>pl.edu.pjatk.foodbook.ignore</configPackage>
+                                <useOptional>false</useOptional>
+                                <useSpringBoot3>true</useSpringBoot3>
+                            </configOptions>
+
+                        </configuration>
+
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>spring-boot</classifier>
+                            <mainClass>
+                                pl.edu.pjatk.foodbook.foodbookservice.FoodbookServiceApplication
+                            </mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

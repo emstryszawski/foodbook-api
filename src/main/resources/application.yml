@@ -1,0 +1,38 @@
+server:
+  port: 8888
+
+spring:
+  security:
+    user:
+      password: admin
+  application:
+    name: foodbook-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/foodbooks
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+foodbook:
+  security:
+    jwt:
+      key: 5266556A586E3272357538782F413F4428472B4B6250645367566B5970337336763979244226452948404D6351665468576D5A7134743777217A25432A462D4A614E645267556B586E3272357538782F413F4428472B4B6250655368566D5971337336763979244226452948404D635166546A576E5A7234753777217A25432A
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka:admin@localhost:8761/eureka/
+logging:
+  level:
+    web: trace
+    feign: trace
+

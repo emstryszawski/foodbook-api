@@ -1,0 +1,185 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8077
+  description: Generated server url
+paths:
+  /api/v1/{recipeId}:
+    get:
+      tags:
+      - recipe-controller
+      operationId: getRecipe
+      parameters:
+      - name: recipeId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/GetRecipe'
+    put:
+      tags:
+      - recipe-controller
+      operationId: updateRecipe
+      parameters:
+      - name: recipeId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRecipeInput'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/GetRecipe'
+    delete:
+      tags:
+      - recipe-controller
+      operationId: deleteRecipeById
+      parameters:
+      - name: recipeId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: OK
+  /api/v1:
+    get:
+      tags:
+      - recipe-controller
+      operationId: getAllRecipes
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GetRecipe'
+    post:
+      tags:
+      - recipe-controller
+      operationId: createRecipe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRecipeInput'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/GetRecipe'
+  /api/v1/owner/{username}:
+    get:
+      tags:
+      - recipe-controller
+      operationId: getOwnerRecipes
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GetRecipe'
+components:
+  schemas:
+    CreateRecipeInput:
+      type: object
+      properties:
+        name:
+          type: string
+        recipe:
+          type: string
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductDto'
+        macros:
+          $ref: '#/components/schemas/Macros'
+        mainProducts:
+          type: string
+        description:
+          type: string
+    Macros:
+      type: object
+      properties:
+        proteins:
+          type: integer
+          format: int32
+        carbs:
+          type: integer
+          format: int32
+        fats:
+          type: integer
+          format: int32
+        calories:
+          type: integer
+          format: int32
+    ProductDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        amount:
+          type: integer
+          format: int32
+        unit:
+          type: string
+    GetRecipe:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        owner:
+          type: string
+        recipe:
+          type: string
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductDto'
+        macros:
+          $ref: '#/components/schemas/Macros'
+        mainProducts:
+          type: string
+        description:
+          type: string
