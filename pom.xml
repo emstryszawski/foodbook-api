@@ -6,6 +6,7 @@
         <groupId>org.foodbook.api</groupId>
         <artifactId>foodbook-starter</artifactId>
         <version>1.0.3</version>
+        <relativePath/>
     </parent>
 
     <artifactId>foodbook-api</artifactId>
