@@ -47,8 +47,8 @@ jobs:
             [
               {
                 "id": "github",
-                "username": "${secrets.GITHUB_USERNAME}",
-                "password": "${secrets.GITHUB_TOKEN}"
+                "username": "${{ secrets.GITHUB_USERNAME }}",
+                "password": "${{ secrets.GITHUB_TOKEN }}"
               }
             ]
           output_file: .m2/settings.xml
