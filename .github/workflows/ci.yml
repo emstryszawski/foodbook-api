@@ -21,13 +21,10 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          server-id: github
-
-      - uses: s4u/maven-settings-action@v2.8.0
 
       - name: Print settings xml
         run: |
-          type /home/runner/.m2/settings.xml
+          cat ~/home/runner/.m2/settings.xml
 
       - name: Test
         run: mvn test
