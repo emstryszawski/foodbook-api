@@ -30,7 +30,7 @@ jobs:
               {
                 "id": "github",
                 "name": "GitHub emstryszawski Apache Maven Packages",
-                "url": "https://maven.pkg.github.com/emstryszawski/foodbook-starter/:_authToken=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",
+                "url": "https://maven.pkg.github.com/emstryszawski/*",
                 "releases": {
                   "enabled": "true",
                   "updatePolicy": "always",
@@ -48,7 +48,7 @@ jobs:
               {
                 "id": "github",
                 "username": "emstryszawski",
-                "password": "$GITHUB_TOKEN"
+                "password": "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"
               }
             ]
           output_file: custom.xml
