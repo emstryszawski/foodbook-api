@@ -22,12 +22,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Print settings xml
-        run: |
-          cat ~/home/runner/.m2/settings.xml
-
       - name: Test
-        run: mvn test
+        run: mvn test -P github
         env:
           GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
