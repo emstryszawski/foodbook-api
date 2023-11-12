@@ -53,7 +53,9 @@ jobs:
             ]
           output_file: .m2/settings.xml
 
-      - run: echo .m2/settings.xml
+      - uses: andstor/file-reader-action@v1
+        with:
+          path: ".m2/settings.xml"
 
       - name: Test
         run: mvn test --settings .m2/settings.xml
