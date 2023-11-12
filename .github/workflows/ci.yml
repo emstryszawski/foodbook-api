@@ -23,13 +23,13 @@ jobs:
           distribution: 'temurin'
 
       - name: Test
-        run: mvn test -P github
+        run: mvn test --settings settings.xml
         env:
           GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
-        run: mvn -B package --file pom.xml
+        run: mvn -B package --file pom.xml --settings settings.xml
         env:
           GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
