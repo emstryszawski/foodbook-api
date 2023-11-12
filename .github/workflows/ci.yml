@@ -47,11 +47,12 @@ jobs:
             [
               {
                 "id": "github",
-                "username": "${secrets.GITHUB_USERNAME}",
-                "password": "${secrets.GITHUB_TOKEN}",
+                "username": "$GITHUB_USERNAME",
+                "password": "$GITHUB_TOKEN",
               }
             ]
           output_file: .m2/settings.xml
+
       - name: Test
         run: mvn test --settings .m2/settings.xml
         env:
