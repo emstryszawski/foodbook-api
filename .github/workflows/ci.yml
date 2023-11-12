@@ -27,8 +27,7 @@ jobs:
 
       - name: Print settings xml
         run: |
-          $LocalMavenM2Dir = "$env:USERPROFILE\.m2\"
-          type $LocalMavenM2Dir\settings.xml
+          type /home/runner/.m2/settings.xml
 
       - name: Test
         run: mvn test
