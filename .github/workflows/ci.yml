@@ -22,6 +22,12 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: maven-settings-xml-action
+        uses: whelk-io/maven-settings-xml-action@v20
+        with:
+          repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/emstryszawski/foodbook-starter" }]'
+          servers: '[{ "id": "github", "username": "$GITHUB_USERNAME", "password": "$GITHUB_TOKEN" }]'
+
       - name: Test
         run: mvn test --settings settings.xml
         env:
