@@ -47,8 +47,6 @@ jobs:
             [
               {
                 "id": "github",
-                "username": "emstryszawski",
-                "password": "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",
                 "configuration": {
                   "httpHeaders": {
                     "property": {
