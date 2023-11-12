@@ -22,20 +22,44 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: maven-settings-xml-action
+      - name: Set up Maven settings
         uses: whelk-io/maven-settings-xml-action@v20
         with:
-          repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/emstryszawski/foodbook-starter" }]'
-          servers: '[{ "id": "github", "username": "$GITHUB_USERNAME", "password": "$GITHUB_TOKEN" }]'
-
+          repositories: >
+            [
+              {
+                "id": "github",
+                "name": "GitHub emstryszawski Apache Maven Packages",
+                "url": "https://maven.pkg.github.com/emstryszawski/foodbook-starter",
+                "releases": {
+                  "enabled": "true",
+                  "updatePolicy": "always",
+                  "checksumPolicy": "fail"
+                },
+                "snapshots": {
+                  "enabled": "true",
+                  "updatePolicy": "always",
+                  "checksumPolicy": "fail"
+                }
+              }
+            ]
+          servers: >
+            [
+              {
+                "id": "github",
+                "username": "${secrets.GITHUB_USERNAME}",
+                "password": "${secrets.GITHUB_TOKEN}",
+              }
+            ]
+          output_file: .m2/settings.xml
       - name: Test
-        run: mvn test
+        run: mvn test --settings .m2/settings.xml
         env:
           GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
-        run: mvn -B package --file pom.xml
+        run: mvn -B package --file pom.xml --settings .m2/settings.xml
         env:
           GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
