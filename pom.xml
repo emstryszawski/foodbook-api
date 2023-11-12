@@ -11,12 +11,17 @@
     <artifactId>foodbook-api</artifactId>
     <name>Foodbook API</name>
 
-    <repositories>
-        <repository>
-            <id>github-maven-packages</id>
-            <url>https://maven.pkg.github.com/emstryszawski/foodbook-starter</url>
-        </repository>
-    </repositories>
+    <profiles>
+        <profile>
+            <id>github</id>
+            <repositories>
+                <repository>
+                    <id>github</id>
+                    <url>https://maven.pkg.github.com/emstryszawski/foodbook-starter</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
 
     <properties>
         <swagger.package>org.foodbook.api.swagger</swagger.package>
