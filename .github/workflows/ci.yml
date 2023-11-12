@@ -51,14 +51,14 @@ jobs:
                 "password": "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"
               }
             ]
-          output_file: .m2/settings.xml
+          output_file: custom.xml
 
       - uses: andstor/file-reader-action@v1
         with:
-          path: ".m2/settings.xml"
+          path: "custom.xml"
 
       - name: Test
-        run: mvn test
+        run: mvn test --settings custom.xml
 
       - name: Build
-        run: mvn -B package --file pom.xml
+        run: mvn -B package --file pom.xml --settings custom.xml
