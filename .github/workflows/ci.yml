@@ -24,8 +24,11 @@ jobs:
           server-id: github
 
       - uses: s4u/maven-settings-action@v2.8.0
-        with:
-          servers: '[{"id": "github", "username": "$GITHUB_USERNAME", "password": "$GITHUB_TOKEN"}]'
+
+      - name: Print settings xml
+        run: |
+          $LocalMavenM2Dir = "$env:USERPROFILE\.m2\"
+          type $LocalMavenM2Dir\settings.xml
 
       - name: Test
         run: mvn test
