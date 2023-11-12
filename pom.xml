@@ -18,6 +18,13 @@
         <postgresql.version>42.5.1</postgresql.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/emstryszawski/foodbook-starter</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.springdoc</groupId>
