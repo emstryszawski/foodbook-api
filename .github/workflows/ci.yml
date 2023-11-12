@@ -23,6 +23,15 @@ jobs:
           distribution: 'temurin'
           server-id: github
 
+      - uses: s4u/maven-settings-action@v2.8.0
+        with:
+          servers: |
+            [{
+                "id": "github",
+                "username": "${{ secrets.GITHUB_USERNAME }}",
+                "password": "${{ secrets.GITHUB_TOKEN }}"
+            }]
+
       - name: Test
         run: mvn test
         env:
