@@ -59,6 +59,10 @@ jobs:
 
       - name: Test
         run: mvn test --settings custom.xml
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
         run: mvn -B package --file pom.xml --settings custom.xml
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
