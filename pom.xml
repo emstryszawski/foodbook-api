@@ -5,18 +5,11 @@
     <parent>
         <groupId>org.foodbook.api</groupId>
         <artifactId>foodbook-starter</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </parent>
 
     <artifactId>foodbook-api</artifactId>
     <name>Foodbook API</name>
-
-    <repositories>
-        <repository>
-            <id>github</id>
-            <url>https://maven.pkg.github.com/emstryszawski/foodbook-starter</url>
-        </repository>
-    </repositories>
 
     <properties>
         <swagger.package>org.foodbook.api.swagger</swagger.package>
