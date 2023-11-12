@@ -24,7 +24,9 @@ jobs:
           cache: maven
 
       - name: Maven
-        uses: s4u/maven-settings-action@v2.8.0
+        uses: whelk-io/maven-settings-xml-action@v4
+        with:
+          servers: '[{"id": "github", "username": "${{ secrets.GITHUB_USERNAME }}", "password": "${{ secrets.GITHUB_TOKEN }}"}]'
 
       - name: Test
         run: mvn test
