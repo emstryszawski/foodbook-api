@@ -1,11 +1,11 @@
-package pl.edu.pjatk.foodbook.foodbookservice;
+package org.foodbook.api.foodbook_api;
 
+import org.foodbook.api.swagger.recipe.api.RecipeControllerApiClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import pl.edu.pjatk.foodbook.foodbookservice.swagger.recipe.api.RecipeControllerApiClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -13,9 +13,9 @@ import pl.edu.pjatk.foodbook.foodbookservice.swagger.recipe.api.RecipeController
 @EnableFeignClients(
     clients = RecipeControllerApiClient.class
 )
-public class FoodbookServiceApplication {
+public class FoodbookApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FoodbookServiceApplication.class, args);
+        SpringApplication.run(FoodbookApplication.class, args);
     }
 }

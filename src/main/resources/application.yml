@@ -2,11 +2,8 @@ server:
   port: 8888
 
 spring:
-  security:
-    user:
-      password: admin
   application:
-    name: foodbook-service
+    name: foodbook-api
   datasource:
     url: jdbc:postgresql://localhost:5432/foodbooks
     username: postgres
@@ -31,6 +28,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka:admin@localhost:8761/eureka/
+
 logging:
   level:
     web: trace

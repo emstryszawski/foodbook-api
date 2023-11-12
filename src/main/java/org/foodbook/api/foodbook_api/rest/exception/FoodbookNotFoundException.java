@@ -1,10 +1,6 @@
-package pl.edu.pjatk.foodbook.foodbookservice.rest.exception;
+package org.foodbook.api.foodbook_api.rest.exception;
 
 public class FoodbookNotFoundException extends RuntimeException {
-
-    public FoodbookNotFoundException() {
-
-    }
 
     public FoodbookNotFoundException(String message) {
         super(message);

@@ -1,4 +1,4 @@
-package pl.edu.pjatk.foodbook.foodbookservice.config;
+package org.foodbook.api.foodbook_api.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

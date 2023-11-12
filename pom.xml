@@ -3,35 +3,22 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.foodbook</groupId>
-        <artifactId>foodbook</artifactId>
-        <version>1.0.1</version>
+        <groupId>org.foodbook.api</groupId>
+        <artifactId>foodbook-starter</artifactId>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>foodbook-api</artifactId>
     <name>Foodbook API</name>
 
     <properties>
-        <swagger.package>pl.edu.pjatk.foodbook.foodbookservice.swagger</swagger.package>
+        <swagger.package>org.foodbook.api.swagger</swagger.package>
         <swagger.input.spec>${project.basedir}/src/main/resources/swagger</swagger.input.spec>
 
         <postgresql.version>42.5.1</postgresql.version>
     </properties>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>org.foodbook</groupId>-->
-<!--            <artifactId>foodbook</artifactId>-->
-<!--            <version>${foodbook.version}</version>-->
-<!--        </dependency>-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -39,6 +26,22 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -48,6 +51,38 @@
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
+        </dependency>
+        <!--<FEIGN>-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-httpclient</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>jackson-databind-nullable</artifactId>
+        </dependency>
+        <!--<FEIGN>-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
         </dependency>
     </dependencies>
 
@@ -70,44 +105,27 @@
                             <generatorName>spring</generatorName>
                             <library>spring-cloud</library>
 
-                            <groupId>pl.edu.pjatk.foodbook.foodbookservice</groupId>
-                            <artifactId>foodbook-service</artifactId>
+                            <groupId>org.foodbook.api</groupId>
+                            <artifactId>foodbook-api</artifactId>
 
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
 
                             <modelPackage>${swagger.package}.recipe.model</modelPackage>
                             <apiPackage>${swagger.package}.recipe.api</apiPackage>
-                            <invokerPackage>pl.edu.pjatk.foodbook.ignore</invokerPackage>
+                            <invokerPackage>org.foodbook.api.ignore</invokerPackage>
 
                             <configOptions>
                                 <sourceFolder>src/gen/java/main</sourceFolder>
                                 <java8>true</java8>
                                 <dateLibrary>java8-localdatetime</dateLibrary>
-                                <configPackage>pl.edu.pjatk.foodbook.ignore</configPackage>
+                                <configPackage>org.foodbook.api.ignore</configPackage>
                                 <useOptional>false</useOptional>
                                 <useSpringBoot3>true</useSpringBoot3>
                             </configOptions>
 
                         </configuration>
 
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                        <configuration>
-                            <classifier>spring-boot</classifier>
-                            <mainClass>
-                                pl.edu.pjatk.foodbook.foodbookservice.FoodbookServiceApplication
-                            </mainClass>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

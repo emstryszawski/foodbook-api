@@ -1,10 +1,10 @@
-package pl.edu.pjatk.foodbook.foodbookservice.rest.dto;
+package org.foodbook.api.foodbook_api.rest.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pl.edu.pjatk.foodbook.foodbookservice.swagger.recipe.model.GetRecipe;
+import org.foodbook.api.swagger.recipe.model.GetRecipe;
 
 import java.util.List;
 import java.util.UUID;

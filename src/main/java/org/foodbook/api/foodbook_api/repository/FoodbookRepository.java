@@ -1,8 +1,8 @@
-package pl.edu.pjatk.foodbook.foodbookservice.repository;
+package org.foodbook.api.foodbook_api.repository;
 
+import org.foodbook.api.foodbook_api.repository.model.Foodbook;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pl.edu.pjatk.foodbook.foodbookservice.repository.model.Foodbook;
 
 import java.util.UUID;
 

@@ -1,4 +1,4 @@
-package pl.edu.pjatk.foodbook.foodbookservice.repository.model;
+package org.foodbook.api.foodbook_api.repository.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -15,7 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Foodbook {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     private String title;

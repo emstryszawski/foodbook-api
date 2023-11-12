@@ -1,12 +1,12 @@
-package pl.edu.pjatk.foodbook.foodbookservice.rest;
+package org.foodbook.api.foodbook_api.rest;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.foodbook.api.foodbook_api.rest.dto.CreateFoodbookInput;
+import org.foodbook.api.foodbook_api.rest.dto.FoodbookRepresentation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.edu.pjatk.foodbook.foodbookservice.rest.dto.CreateFoodbookInput;
-import pl.edu.pjatk.foodbook.foodbookservice.rest.dto.FoodbookRepresentation;
 
 import java.util.List;
 import java.util.UUID;

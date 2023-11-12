@@ -1,16 +1,16 @@
-package pl.edu.pjatk.foodbook.foodbookservice.rest;
+package org.foodbook.api.foodbook_api.rest;
 
 import lombok.RequiredArgsConstructor;
+import org.foodbook.api.foodbook_api.repository.FoodbookRepository;
+import org.foodbook.api.foodbook_api.repository.model.Foodbook;
+import org.foodbook.api.foodbook_api.rest.dto.CreateFoodbookInput;
+import org.foodbook.api.foodbook_api.rest.dto.FoodbookRepresentation;
+import org.foodbook.api.swagger.recipe.api.RecipeControllerApi;
+import org.foodbook.api.swagger.recipe.model.GetRecipe;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import pl.edu.pjatk.foodbook.foodbookservice.repository.FoodbookRepository;
-import pl.edu.pjatk.foodbook.foodbookservice.repository.model.Foodbook;
-import pl.edu.pjatk.foodbook.foodbookservice.rest.dto.CreateFoodbookInput;
-import pl.edu.pjatk.foodbook.foodbookservice.rest.dto.FoodbookRepresentation;
-import pl.edu.pjatk.foodbook.foodbookservice.rest.exception.FoodbookNotFoundException;
-import pl.edu.pjatk.foodbook.foodbookservice.swagger.recipe.api.RecipeControllerApi;
-import pl.edu.pjatk.foodbook.foodbookservice.swagger.recipe.model.GetRecipe;
+import org.foodbook.api.foodbook_api.rest.exception.FoodbookNotFoundException;
 
 import java.util.List;
 import java.util.Objects;

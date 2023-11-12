@@ -1,4 +1,4 @@
-package pl.edu.pjatk.foodbook.foodbookservice.config;
+package org.foodbook.api.foodbook_api.config;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;

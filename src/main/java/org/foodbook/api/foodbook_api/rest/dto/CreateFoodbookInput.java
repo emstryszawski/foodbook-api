@@ -1,4 +1,4 @@
-package pl.edu.pjatk.foodbook.foodbookservice.rest.dto;
+package org.foodbook.api.foodbook_api.rest.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
