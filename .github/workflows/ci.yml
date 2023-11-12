@@ -58,7 +58,7 @@ jobs:
           path: ".m2/settings.xml"
 
       - name: Test
-        run: mvn test --settings .m2/settings.xml
+        run: mvn test
 
       - name: Build
-        run: mvn -B package --file pom.xml --settings .m2/settings.xml
+        run: mvn -B package --file pom.xml
