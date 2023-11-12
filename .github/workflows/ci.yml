@@ -53,6 +53,8 @@ jobs:
             ]
           output_file: .m2/settings.xml
 
+      - run: echo .m2/settings.xml
+
       - name: Test
         run: mvn test --settings .m2/settings.xml
         env:
