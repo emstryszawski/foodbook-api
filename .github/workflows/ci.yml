@@ -29,13 +29,13 @@ jobs:
           servers: '[{ "id": "github", "username": "$GITHUB_USERNAME", "password": "$GITHUB_TOKEN" }]'
 
       - name: Test
-        run: mvn test --settings settings.xml
+        run: mvn test
         env:
           GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
-        run: mvn -B package --file pom.xml --settings settings.xml
+        run: mvn -B package --file pom.xml
         env:
           GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
