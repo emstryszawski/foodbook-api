@@ -21,22 +21,46 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: maven
 
-      - name: Maven
-        uses: s4u/maven-settings-action@v2.8.0
+      - name: Set up Maven settings
+        uses: whelk-io/maven-settings-xml-action@v21
         with:
-          servers: |
-            [{
-              "id": "github",
-              "username": "${{ secrets.GITHUB_USERNAME }}",
-              "password": "${{ secrets.GITHUB_TOKEN }}"
-            }]
+          repositories: >
+            [
+              {
+                "id": "github",
+                "name": "GitHub emstryszawski Apache Maven Packages",
+                "url": "https://maven.pkg.github.com/emstryszawski/*",
+                "releases": {
+                  "enabled": "true",
+                  "updatePolicy": "always",
+                  "checksumPolicy": "fail"
+                },
+                "snapshots": {
+                  "enabled": "true",
+                  "updatePolicy": "always",
+                  "checksumPolicy": "fail"
+                }
+              }
+            ]
+          servers: >
+            [
+              {
+                "id": "github",
+                "configuration": {
+                  "httpHeaders": {
+                    "property": {
+                      "name": "Authorization",
+                      "value": "Bearer ${{ secrets.GITHUB_TOKEN }}"
+                    }
+                  }
+                }
+              }
+            ]
+          output_file: settings.xml
 
       - name: Test
-        run: mvn test
-        continue-on-error: false
+        run: mvn test --settings settings.xml
 
       - name: Build
-        run: mvn -B package --file pom.xml
-        continue-on-error: false
+        run: mvn -B package --file pom.xml --settings settings.xml

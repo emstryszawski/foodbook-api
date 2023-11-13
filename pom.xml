@@ -5,7 +5,8 @@
     <parent>
         <groupId>org.foodbook.api</groupId>
         <artifactId>foodbook-starter</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.4</version>
+        <relativePath/>
     </parent>
 
     <artifactId>foodbook-api</artifactId>
