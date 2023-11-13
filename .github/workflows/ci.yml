@@ -57,14 +57,10 @@ jobs:
                 }
               }
             ]
-          output_file: custom.xml
-
-      - uses: andstor/file-reader-action@v1
-        with:
-          path: "custom.xml"
+          output_file: settings.xml
 
       - name: Test
-        run: mvn test --settings custom.xml
+        run: mvn test --settings settings.xml
 
       - name: Build
-        run: mvn -B package --file pom.xml --settings custom.xml
+        run: mvn -B package --file pom.xml --settings settings.xml
